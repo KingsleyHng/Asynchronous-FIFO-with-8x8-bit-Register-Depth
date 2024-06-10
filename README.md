@@ -1,2 +1,2 @@
-# Asynchronous-FIFO-with-8x8-bit-Register-Depth
-Utilizing an 8-register deep FIFO structure, with each register storing 8 bits of data, this design operates asynchronously, simplifying data transfer between different clock domains. Developed using Icarus Verilog, the simulation results are presented in GTKwave, showcasing its efficiency and adaptability for managing data flow in digital systems.
+Asynchronous FIFO with 8x8-bit Register Depth
+This design features an asynchronous FIFO with a depth of eight registers, each capable of storing 8 bits of data. It is tailored to facilitate seamless data transfer across distinct clock domains, enhancing the robustness and flexibility of digital systems. The test bench for this FIFO is crafted in SystemVerilog and run in EDA Playground using Synopsys VCS for simulation.
