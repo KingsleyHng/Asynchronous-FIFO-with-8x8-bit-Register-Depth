@@ -1,9 +1,11 @@
-`timescale 1ns/1ps
+timescale 1ns/1ps
 
 module async_fifo_tb;
 
   parameter DATA_WIDTH = 8;
   parameter ADDR_WIDTH = 3;
+  parameter READ_CLK_PERIOD = 35;   // Default read clock period
+  parameter WRITE_CLK_PERIOD = 8; // Faster read clock period for another setting
 
   reg write_enable, write_clk, write_reset_n;
   reg read_enable, read_clk, read_reset_n;
@@ -34,13 +36,11 @@ module async_fifo_tb;
   initial begin
     write_clk = 1'b0;
     read_clk = 1'b0;
-
     fork
-      forever #20 write_clk = ~write_clk;
-      forever #80 read_clk = ~read_clk;
+      forever #(WRITE_CLK_PERIOD/2) write_clk = ~write_clk; // Configurable write clock
+      forever #(READ_CLK_PERIOD/2) read_clk = ~read_clk;    // Configurable read clock
     join
   end
-
   // Write operations
   initial begin
     write_enable = 1'b0;
